@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<!--
+  ============================================
+  WASIF FAROOQUI — PORTFOLIO
+  index.html
+  ============================================
+
+  HOW THIS FILE IS ORGANISED
+  --------------------------
+  Each major section is wrapped in a comment banner
+  (search for "========" to jump between them).
+
+  SECTIONS (in order)
+  -------------------
+  0. Sticky header   — appears after scrolling past hero (removable)
+  1. Hero            — full-screen intro with B&W → colour reveal + CV download
+  2. About           — bio + staggered image cards
+  3. Experience      — career timeline (dark bg)
+  4. Skills          — percentage bars (dark bg)
+  4b. Tools & Tech   — horizontal pill strip of your tech stack
+  5. Certifications  — cert cards + education (light bg)
+  6. Creations       — horizontal slider with case study overlays
+  7. Statement       — circular rotating text + portrait
+  8. Testimonials    — petal-shaped quote cards
+  9. Contact form    — Formspree-powered form + contact info
+  10. Footer         — closing poster + links + socials
+
+  HOW TO UPDATE CONTENT
+  ---------------------
+  • Name / title    — search "MOHAMMED WASIF" and "Farooqui"
+  • Hero images     — update the two <img> src inside #heroPortrait
+  • About images    — update <img> src inside .about__gallery
+  • Skills          — edit .skills__row blocks (percentage + text)
+  • Tools & Tech    — add/remove .techstack__item spans
+  • Certifications  — add/remove .certs__card blocks
+  • Experience      — add/remove .timeline__item blocks
+  • Case studies    — edit .creations__overlay blocks (title + description)
+  • Gallery images  — update <img> src inside #creationsTrack
+  • Testimonials    — edit .testimonials__card blocks
+  • Contact form    — Formspree ID already set (maqlqlpv); change in <form action> if needed
+  • Contact / links — search "mailto:" and "linkedin.com"
+  • CV download     — update href on .hero__action-btn (points to Profile PDF)
+  • GitHub link     — update href on the GH social link in footer
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammed Wasif — Product &amp; AI Professional</title>
+  <meta name="description" content="Mohammed Wasif Farooqui — Product &amp; AI Professional with 7+ years in IT. MSc in AI. Python, SQL, CRM, web development, and Generative AI across the Middle East & Africa.">
+  <meta name="author" content="Mohd Wasif Farooqui">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mohammed Wasif — Product & AI Professional">
+  <meta property="og:description" content="7+ years in IT. MSc in AI. Python, SQL, CRM, web development, and Generative AI across MEA.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="Wasif Mohammed_JCDecaux_0875_January 2023.jpg">
+  <!-- Favicon (replace with your own) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>W</text></svg>">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts: Bebas Neue (bold condensed headings) + Inter (clean body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ========================================
+       STICKY HEADER (appears after scrolling past hero)
+       ─────────────────────────────────────────
+       TO REMOVE: delete this <header> block, the
+       .sticky-header styles in style.css, and the
+       "6. STICKY HEADER" block in script.js.
+       TO RESTORE: reverse the above.
+       ======================================== -->
+  <header class="sticky-header" id="stickyHeader">
+    <div class="sticky-header__inner">
+      <a href="#hero" class="sticky-header__logo">MOHAMMED WASIF</a>
+      <ul class="sticky-header__links">
+        <li><a href="#about">WHO DIS?</a></li>
+        <li><a href="#experience">JOURNEY</a></li>
+        <li><a href="#creations">MY VIBES</a></li>
+        <li><a href="#contact">HIT ME UP</a></li>
+      </ul>
+      <div class="sticky-header__right"></div>
+    </div>
+  </header>
+
+
+  <!-- ========================================
+       1. HERO SECTION
+       ======================================== -->
+  <section id="hero" class="hero">
+    <div class="hero__inner">
+
+      <!-- Navigation -->
+      <nav class="hero__nav">
+        <a href="#" class="hero__logo">MOHAMMED WASIF</a>
+        <ul class="hero__links">
+          <li><a href="#about">WHO DIS?</a></li>
+          <li><a href="#experience">JOURNEY</a></li>
+          <li><a href="#creations">MY VIBES</a></li>
+          <li><a href="#contact">HIT ME UP</a></li>
+        </ul>
+      </nav>
+
+      <!-- Hero content -->
+      <div class="hero__content">
+
+        <!-- Left supporting text -->
+        <div class="hero__side-text hero__side-text--left reveal-on-scroll">
+          <p class="hero__label">PORTFOLIO — 2026</p>
+          <p class="hero__sublabel">Product, Data<br>& AI Professional</p>
+        </div>
+
+        <!-- Large background word -->
+        <h1 class="hero__bg-word" aria-hidden="true">PRODUCT SPECIALIST</h1>
+
+        <!-- Portrait with hover reveal -->
+        <div class="hero__portrait" id="heroPortrait">
+          <!-- Grayscale base layer -->
+          <img
+            src="Wasifblack.png"
+            alt=""
+            class="hero__img hero__img--bw"
+            draggable="false"
+          >
+          <!-- Full-color reveal layer (masked by JS) -->
+          <img
+            src="Wasif Mohammed_JCDecaux_0875_January 2023.jpg"
+            alt="Mohd Wasif Farooqui"
+            class="hero__img hero__img--color"
+            id="heroColorImg"
+            draggable="false"
+          >
+          <!-- Canvas for the soft radial mask (driven by JS) -->
+          <canvas id="heroRevealCanvas" class="hero__reveal-canvas"></canvas>
+        </div>
+
+        <!-- Right badge / stamp -->
+        <div class="hero__side-text hero__side-text--right reveal-on-scroll">
+          <div class="hero__stamp">
+            <span>MSc</span>
+            <span>IN</span>
+            <span>AI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subtitle -->
+      <p class="hero__subtitle reveal-on-scroll">Product · Data · AI · 7+ Years in Tech · MSc in AI · Dubai, UAE</p>
+
+      <!-- Hero action buttons -->
+      <div class="hero__actions reveal-on-scroll">
+        <a href="Profile (4).pdf" download class="hero__action-btn">↓ Download CV</a>
+        <a href="#contact" class="hero__action-btn hero__action-btn--outline">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       2. ABOUT ME SECTION
+       ======================================== -->
+  <section id="about" class="about">
+    <div class="about__top reveal-on-scroll">
+      <h2 class="about__label">ABOUT ME</h2>
+      <p class="about__blurb">
+        Product &amp; AI Professional with 7+ years of experience across
+        IT, product support, web development, and data. At JCDecaux
+        Middle East I manage product training, build SQL dashboards,
+        administer CRM platforms (SAP, Zoho, Dynamics 365), and apply
+        Generative AI to improve workflows. I also develop websites,
+        write Python, and hold an MSc in Artificial Intelligence.
+      </p>
+    </div>
+
+    <h3 class="about__headline reveal-on-scroll">
+      I BUILD. I SOLVE.<br>I SHIP.
+    </h3>
+
+    <!-- Staggered image cards -->
+    <div class="about__gallery reveal-on-scroll">
+      <div class="about__card about__card--1">
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=800&fit=crop" alt="Artificial Intelligence">
+      </div>
+      <div class="about__card about__card--2">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=800&fit=crop" alt="Data analytics dashboard">
+      </div>
+      <div class="about__card about__card--3">
+        <img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=600&h=800&fit=crop" alt="Product strategy">
+      </div>
+      <div class="about__card about__card--4">
+        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=800&fit=crop" alt="Code and AI models">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       3. EXPERIENCE TIMELINE SECTION
+       Displays career history in reverse-chronological order.
+       To add a new role: copy a .timeline__item block and update.
+       ======================================== -->
+  <section id="experience" class="experience">
+    <h2 class="experience__label reveal-on-scroll">EXPERIENCE</h2>
+    <h3 class="experience__headline reveal-on-scroll">THE JOURNEY<br>SO FAR</h3>
+
+    <div class="timeline">
+      <!-- Role 1 -->
+      <div class="timeline__item reveal-on-scroll">
+        <span class="timeline__date">DEC 2023 — PRESENT</span>
+        <div class="timeline__content">
+          <h4>Product Support Specialist — Middle East &amp; Africa</h4>
+          <p class="timeline__company">JCDecaux Middle East · Dubai, UAE</p>
+          <ul class="timeline__details">
+            <li>Designing &amp; delivering training programs for internal sales tools across MEA</li>
+            <li>Building SQL-powered dashboards and data reports for regional leadership</li>
+            <li>Troubleshooting IT issues and collaborating cross-functionally to resolve problems</li>
+            <li>Onboarding employees with walkthroughs, user guides &amp; operational documentation</li>
+            <li>Testing new software features and feeding back to development teams</li>
+            <li>Using Generative AI tools (Gemini, ChatGPT) to improve support workflows</li>
+            <li>Managing CRM data and processes across SAP, Zoho &amp; Dynamics 365</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Role 2 -->
+      <div class="timeline__item reveal-on-scroll">
+        <span class="timeline__date">JAN 2022 — JUN 2024</span>
+        <div class="timeline__content">
+          <h4>IT Help Desk &amp; Application Support</h4>
+          <p class="timeline__company">JCDecaux Middle East · Dubai, UAE</p>
+          <ul class="timeline__details">
+            <li>Managed help-desk operations and resolved application-level issues across the region</li>
+            <li>Maintained internal systems and supported end-users with troubleshooting &amp; guidance</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Role 3 -->
+      <div class="timeline__item reveal-on-scroll">
+        <span class="timeline__date">JAN 2021 — DEC 2021</span>
+        <div class="timeline__content">
+          <h4>IT Specialist</h4>
+          <p class="timeline__company">Focus Media · Dubai, UAE</p>
+          <ul class="timeline__details">
+            <li>Delivered end-to-end IT support and systems management for a media company</li>
+            <li>Built and maintained the company website (focus-ae.com) using WordPress</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Role 4 -->
+      <div class="timeline__item reveal-on-scroll">
+        <span class="timeline__date">OCT 2017 — MAY 2019</span>
+        <div class="timeline__content">
+          <h4>IT &amp; Designer</h4>
+          <p class="timeline__company">Max Advertising · India</p>
+          <ul class="timeline__details">
+            <li>Managed IT infrastructure alongside graphic design and creative output</li>
+            <li>Designed marketing materials, edited photos, and created visual content</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       4. SKILLS & EXPERTISE SECTION
+       ======================================== -->
+  <section id="skills" class="skills">
+    <h2 class="skills__label reveal-on-scroll">SKILLS &amp; EXPERTISE</h2>
+
+    <!-- Decorative skill indicator -->
+    <div class="skills__indicator reveal-on-scroll">
+      <span class="skills__blob"></span>
+      <span class="skills__line"></span>
+      <span class="skills__blob"></span>
+      <span class="skills__line"></span>
+      <span class="skills__blob"></span>
+      <span class="skills__line"></span>
+      <span class="skills__blob"></span>
+    </div>
+
+    <!-- Skill rows — ordered by relevance to target roles -->
+    <div class="skills__row reveal-on-scroll">
+      <span class="skills__pct">82%</span>
+      <div class="skills__info">
+        <h3>PYTHON &amp; AI ENGINEERING</h3>
+        <p>Python scripting, Generative AI (Gemini, ChatGPT), prompt engineering, RPA automation. Backed by an MSc in Artificial Intelligence.</p>
+      </div>
+    </div>
+
+    <div class="skills__row reveal-on-scroll">
+      <span class="skills__pct">85%</span>
+      <div class="skills__info">
+        <h3>PRODUCT THINKING &amp; USER ADOPTION</h3>
+        <p>Training design, onboarding flows, user feedback collection, software testing, and feature improvement across 15+ MEA markets.</p>
+      </div>
+    </div>
+
+    <div class="skills__row reveal-on-scroll">
+      <span class="skills__pct">85%</span>
+      <div class="skills__info">
+        <h3>DATA, SQL &amp; CRM SYSTEMS</h3>
+        <p>SQL Server dashboards, data modeling, Power BI. Hands-on with SAP, Zoho, and Microsoft Dynamics 365 CRM.</p>
+      </div>
+    </div>
+
+    <div class="skills__row reveal-on-scroll">
+      <span class="skills__pct">88%</span>
+      <div class="skills__info">
+        <h3>WEB &amp; APPLICATION DEVELOPMENT</h3>
+        <p>WordPress (Divi, Elementor), HTML/CSS/JS, Python. Built live sites (focus-ae.com, extreme-ae.com) and this portfolio from scratch.</p>
+      </div>
+    </div>
+
+    <div class="skills__row reveal-on-scroll">
+      <span class="skills__pct">90%</span>
+      <div class="skills__info">
+        <h3>IT OPERATIONS &amp; TROUBLESHOOTING</h3>
+        <p>7+ years: help-desk management, systems maintenance, cross-functional collaboration, and end-user support across MEA.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       4-b. TOOLS & TECH STACK
+       A horizontal strip showing your technical toolkit.
+       To add a tool: add a <span class="techstack__item"> block.
+       To remove: delete the <span>.
+       ======================================== -->
+  <section class="techstack">
+    <h2 class="techstack__label reveal-on-scroll">TOOLS &amp; TECH</h2>
+    <div class="techstack__track reveal-on-scroll">
+      <span class="techstack__item">Python</span>
+      <span class="techstack__item">SQL Server</span>
+      <span class="techstack__item">WordPress</span>
+      <span class="techstack__item">Divi / Elementor</span>
+      <span class="techstack__item">HTML / CSS / JS</span>
+      <span class="techstack__item">SAP</span>
+      <span class="techstack__item">Zoho CRM</span>
+      <span class="techstack__item">Dynamics 365</span>
+      <span class="techstack__item">Power BI</span>
+      <span class="techstack__item">Google Gemini</span>
+      <span class="techstack__item">ChatGPT / OpenAI</span>
+      <span class="techstack__item">Figma / Canva</span>
+      <span class="techstack__item">RPA / UiPath</span>
+      <span class="techstack__item">Jira</span>
+      <span class="techstack__item">Agile / Scrum</span>
+      <span class="techstack__item">Prompt Engineering</span>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       5. CERTIFICATIONS & EDUCATION SECTION
+       To add a cert: copy a .certs__card block.
+       To add education: copy a .certs__edu-card block.
+       ======================================== -->
+  <section id="certs" class="certs">
+    <div class="certs__header reveal-on-scroll">
+      <h2 class="certs__label">CERTIFICATIONS</h2>
+      <p class="certs__sub">Continuous learning across AI, product management, automation, and IT operations.</p>
+    </div>
+
+    <div class="certs__grid reveal-on-scroll">
+      <div class="certs__card">
+        <span class="certs__icon">🏅</span>
+        <h4>Advanced Agile Practices &amp; Continuous Improvement</h4>
+      </div>
+      <div class="certs__card">
+        <span class="certs__icon">🎮</span>
+        <h4>Electronic Arts — Product Management Job Simulation</h4>
+      </div>
+      <div class="certs__card">
+        <span class="certs__icon">🤖</span>
+        <h4>Multimodal Prompting with Google's Project Gemini</h4>
+      </div>
+      <div class="certs__card">
+        <span class="certs__icon">⚙️</span>
+        <h4>RPA Automation Introduction</h4>
+      </div>
+      <div class="certs__card">
+        <span class="certs__icon">🛡️</span>
+        <h4>Google IT Support Professional Certificate</h4>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <h3 class="certs__edu-heading reveal-on-scroll">EDUCATION</h3>
+    <div class="certs__edu reveal-on-scroll">
+      <div class="certs__edu-card">
+        <span class="certs__degree">MSc Information Technology — Artificial Intelligence</span>
+        <span class="certs__school">University of Mumbai · 2020 – 2022</span>
+      </div>
+      <div class="certs__edu-card">
+        <span class="certs__degree">BSc Information Technology</span>
+        <span class="certs__school">Rizvi College of Arts, Science &amp; Commerce · 2016 – 2018</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       6. CREATIONS / GALLERY SLIDER SECTION
+       ======================================== -->
+  <section id="creations" class="creations">
+    <div class="creations__header reveal-on-scroll">
+      <p class="creations__intro">Websites I've built, dashboards I've designed, and systems I've improved.</p>
+      <h2 class="creations__headline">MY WORK</h2>
+    </div>
+
+    <!-- Slider -->
+    <div class="creations__slider" id="creationsSlider">
+      <div class="creations__track" id="creationsTrack">
+        <article class="creations__card">
+          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop" alt="Focus Media Website">
+          <div class="creations__overlay">
+            <h4>focus-ae.com</h4>
+            <p>Built and maintained the Focus Media company website using WordPress. Handled design, content management, and ongoing updates.</p>
+          </div>
+        </article>
+        <article class="creations__card">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" alt="Extreme AE Website">
+          <div class="creations__overlay">
+            <h4>extreme-ae.com</h4>
+            <p>Developed the Extreme AE website with WordPress (Divi/Elementor). Managed hosting, design, and responsiveness across devices.</p>
+          </div>
+        </article>
+        <article class="creations__card">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="SQL Dashboards">
+          <div class="creations__overlay">
+            <h4>SQL Dashboards &amp; Reporting</h4>
+            <p>Built dashboards using SQL Server to replace manual Excel reporting at JCDecaux. Regional teams now access live data for sales and operations.</p>
+          </div>
+        </article>
+        <article class="creations__card">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop" alt="This Portfolio">
+          <div class="creations__overlay">
+            <h4>This Portfolio Site</h4>
+            <p>Built from scratch with HTML, CSS &amp; JavaScript. Features cursor-tracked B&amp;W→colour reveal, dark mode, AJAX contact form, and responsive design.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Slider controls -->
+    <div class="creations__controls reveal-on-scroll">
+      <button class="creations__arrow creations__arrow--prev" id="sliderPrev" aria-label="Previous">&#8592;</button>
+      <button class="creations__arrow creations__arrow--next" id="sliderNext" aria-label="Next">&#8594;</button>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       7. CIRCULAR TEXT STATEMENT SECTION
+       ======================================== -->
+  <section id="statement" class="statement">
+    <div class="statement__wrap reveal-on-scroll">
+      <!-- Circular text (SVG driven) -->
+      <svg class="statement__svg" viewBox="0 0 500 500" aria-hidden="true">
+        <defs>
+          <path id="circlePath" d="M250,250 m-200,0 a200,200 0 1,1 400,0 a200,200 0 1,1 -400,0" />
+        </defs>
+      <text>
+          <textPath href="#circlePath" class="statement__curved-text">
+            PYTHON AI PRODUCT SQL CRM DESIGN BUILD SHIP • PYTHON AI PRODUCT SQL CRM DESIGN BUILD SHIP •
+          </textPath>
+        </text>
+      </svg>
+      <!-- Center portrait -->
+      <div class="statement__portrait">
+        <img src="Wasif Mohammed_JCDecaux_0875_January 2023.jpg" alt="Wasif Farooqui">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       8. TESTIMONIALS SECTION
+       ======================================== -->
+  <section id="testimonials" class="testimonials">
+    <h2 class="testimonials__headline reveal-on-scroll">TESTIMONIALS</h2>
+
+    <div class="testimonials__grid reveal-on-scroll">
+      <div class="testimonials__card testimonials__card--white">
+        <div class="testimonials__stars">★★★★★</div>
+        <p>"Wasif's training sessions made our team genuinely confident using the new tools. Adoption was seamless."</p>
+        <span class="testimonials__name">— Colleague, JCDecaux</span>
+      </div>
+      <div class="testimonials__card testimonials__card--blush">
+        <div class="testimonials__stars">★★★★★</div>
+        <p>"His dashboards replaced hours of manual work. We finally have data we can act on quickly."</p>
+        <span class="testimonials__name">— Manager, JCDecaux</span>
+      </div>
+      <div class="testimonials__card testimonials__card--white">
+        <div class="testimonials__stars">★★★★★</div>
+        <p>"Always the first person to troubleshoot and find a fix. Incredibly reliable and patient."</p>
+        <span class="testimonials__name">— Team Lead</span>
+      </div>
+      <div class="testimonials__card testimonials__card--blush">
+        <div class="testimonials__stars">★★★★★</div>
+        <p>"Wasif doesn't just fix problems — he teaches you how to avoid them. A true support champion."</p>
+        <span class="testimonials__name">— End User</span>
+      </div>
+      <div class="testimonials__card testimonials__card--white">
+        <div class="testimonials__stars">★★★★★</div>
+        <p>"His curiosity about AI is genuine. He's always exploring new ways to make our processes better."</p>
+        <span class="testimonials__name">— IT Colleague</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       10. CONTACT FORM
+       Uses Formspree for zero-backend form handling.
+       Formspree ID: maqlqlpv (connected)
+       ======================================== -->
+  <section id="contact" class="contact">
+    <div class="contact__inner">
+      <div class="contact__left reveal-on-scroll">
+        <h2 class="contact__headline">LET'S<br>CONNECT</h2>
+        <p class="contact__sub">Have a project, a product, or a role that needs someone who can bridge tech and business? I'd love to hear about it.</p>
+        <div class="contact__info">
+          <p><strong>Email</strong> &mdash; wasiffrd@gmail.com</p>
+          <p><strong>Phone</strong> &mdash; +971 529806036</p>
+          <p><strong>LinkedIn</strong> &mdash; <a href="https://www.linkedin.com/in/wasifpr" target="_blank">linkedin.com/in/wasifpr</a></p>
+        </div>
+      </div>
+      <!-- Formspree form — connected and live -->
+      <form class="contact__form reveal-on-scroll" id="contactForm" action="https://formspree.io/f/maqlqlpv" method="POST">
+        <div class="contact__field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="contact__field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="contact__field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or opportunity…" required></textarea>
+        </div>
+        <button type="submit" class="contact__submit">Send Message →</button>
+        <p class="contact__status" id="contactStatus"></p>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       11. FOOTER / THANK YOU SECTION
+       ======================================== -->
+  <footer id="footer" class="footer">
+    <div class="footer__inner">
+
+      <!-- Big closing statement -->
+      <div class="footer__headline reveal-on-scroll">
+        <span class="footer__ty-left">THANK YOU</span>
+        <span class="footer__ty-right">FOR VIEWING</span>
+      </div>
+
+      <!-- Large background word -->
+      <span class="footer__bg-word" aria-hidden="true">PRODUCT SPECIALIST</span>
+
+      <!-- Center portrait -->
+      <div class="footer__portrait reveal-on-scroll">
+        <img src="Wasif Mohammed_JCDecaux_0875_January 2023.jpg" alt="Wasif Farooqui">
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="footer__bottom reveal-on-scroll">
+        <ul class="footer__links">
+          <li><a href="#hero">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#creations">WORK</a></li>
+          <li><a href="mailto:wasiffrd@gmail.com">CONTACT</a></li>
+        </ul>
+        <div class="footer__socials">
+          <a href="https://www.linkedin.com/in/wasifpr" target="_blank" aria-label="LinkedIn">LI</a>
+<a href="https://github.com/wasifpr" target="_blank" aria-label="GitHub">GH</a>
+          <a href="mailto:wasiffrd@gmail.com" aria-label="Email">EM</a>
+        </div>
+        <p class="footer__copy">&copy; 2026 Mohammed Wasif Farooqui. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
